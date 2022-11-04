@@ -14,6 +14,7 @@ const UsersList = () => {
     const [selectedProf, setSelectedProf] = useState();
     const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
     const pageSize = 8;
+    const [filterName, setFilterName] = useState("");
 
     const [users, setUsers] = useState();
     useEffect(() => {
@@ -52,6 +53,7 @@ const UsersList = () => {
     };
     const searchItem = (e) => {
         console.log(e.target.value);
+        setFilterName(e.target.value);
     };
 
     if (users) {
@@ -94,6 +96,7 @@ const UsersList = () => {
                 )}
                 <div className="d-flex flex-column">
                     <SearchStatus length={count} />
+                    <InputFilter value={searchItem} onChange={searchItem} />
                     {count > 0 && (
                         <UserTable
                             users={usersCrop}
@@ -104,11 +107,6 @@ const UsersList = () => {
                         />
                     )}
                     <div className="d-flex justify-content-center">
-                        <InputFilter
-                            name={filter}
-                            type={text}
-                            value={searchItem}
-                        />
                         <Pagination
                             itemsCount={count}
                             pageSize={pageSize}
