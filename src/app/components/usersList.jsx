@@ -50,6 +50,9 @@ const UsersList = () => {
     const handleSort = (item) => {
         setSortBy(item);
     };
+    const searchItem = (e) => {
+        console.log(e.target.value);
+    };
 
     if (users) {
         const filteredUsers = selectedProf
@@ -101,7 +104,11 @@ const UsersList = () => {
                         />
                     )}
                     <div className="d-flex justify-content-center">
-                        <InputFilter name={filter} type={text} />
+                        <InputFilter
+                            name={filter}
+                            type={text}
+                            value={searchItem}
+                        />
                         <Pagination
                             itemsCount={count}
                             pageSize={pageSize}
