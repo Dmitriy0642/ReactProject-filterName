@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-const InputFilter = ({ value, onChange }) => {
+
+const SearchStatus = ({ onChange, value }) => {
     return (
         <form action="">
             <div>
                 <input
                     type="text"
-                    name="filter"
                     value={value}
+                    name="filter"
                     onChange={onChange}
                     placeholder="Search..."
                 />
@@ -15,9 +16,9 @@ const InputFilter = ({ value, onChange }) => {
         </form>
     );
 };
-InputFilter.propTypes = {
-    value: PropTypes.func,
-    onChange: PropTypes.func
+SearchStatus.propTypes = {
+    onChange: PropTypes.func,
+    value: PropTypes.string
 };
 
-export default InputFilter;
+export default SearchStatus;
